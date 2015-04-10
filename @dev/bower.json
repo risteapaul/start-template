@@ -1,0 +1,8 @@
+{
+  "name": "Bootstrap",
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.3.0",
+    "headjs": "~1.0.3"
+  }
+}

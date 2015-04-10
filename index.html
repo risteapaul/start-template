@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="icon" href="img/favicon.ico">
+
+    <title>Start</title>
+
+    <script type="text/javascript" src="js/head.min.js"></script>
+
+    <!--styles-->
+    <script type="text/javascript">
+        head.load("css/libraries.css", "css/main.css");
+    </script>
+
+    <!--javascript-->
+    <script type="text/javascript">
+        head.load("js/libraries.js", function() {
+            head.ready(document, function() {
+                head.load("js/init.js");
+            });
+        });
+        if (head.mobile) {
+            // js & css for mobile
+        }
+        if (head.browser.ie && head.browser.version < 9) {
+            head.load("css/legacy/ie.css", "js/legacy/ie.js");
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+
+<div class="mainloading" style="width:100%; height: 1000px; background: url('img/loading.gif') no-repeat 50% 100px; text-align: center; padding-top: 160px; font-family: arial, sans-serif; font-size: 17px; color: #999;">Se incarca.. </div>
+
+
+<div class="header">
+    <div class="container">
+        header
+    </div>
+</div>
+
+<div class="content">
+    <div class="container">
+        content
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        footer
+    </div>
+</div>
+
+
+</body>
+</html>
