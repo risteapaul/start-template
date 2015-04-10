@@ -1,20 +1,15 @@
 {
-  "name": "Bootstrap",
+  "name": "Start template",
   "version": "0.0.1",
   "description": "Start template based on bootstrap with grunt",
-  "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/risteapaul/bootstrap.git"
+    "url": "https://github.com/risteapaul/start-template.git"
   },
-  "keywords": [
-    "Grunt",
-    "Bootstrap"
-  ],
   "author": "Paul Ristea",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/risteapaul/bootstrap/issues"
+    "url": "https://github.com/risteapaul/start-template/issues"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
