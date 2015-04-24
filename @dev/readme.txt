@@ -1,9 +1,9 @@
 cd @dev
 npm install
-npm install -g bower
 bower install
 grunt start
 grunt
 
 
+(first time: npm install -g bower; npm install -g grunt-cli)
 (to add files to project via bower :  bower install bootstrap -S)
