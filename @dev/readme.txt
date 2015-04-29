@@ -1,7 +1,7 @@
 cd @dev
 npm install
 bower install
-grunt start
+grunt hard
 grunt
 
 

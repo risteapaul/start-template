@@ -5,10 +5,23 @@ module.exports = function(grunt) {
         less: {
             development: {
                 options: {
-                    compress: true
+                    compress: false
                 },
                 files: {
                     "./assets/css/libraries.css" : "./assets/less/libraries.less"
+                }
+            }
+        },
+
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1,
+                keepSpecialComments: 0
+            },
+            target: {
+                files: {
+                    './../css/libraries.css': ['./assets/css/*.css']
                 }
             }
         },
@@ -36,20 +49,15 @@ module.exports = function(grunt) {
 
         concat: {
             options: {
-                stripBanners : {
-                    block: true
-                }
+                separator: ';'
             },
             js: {
                 src: [
                     './bower_components/jquery/dist/jquery.js',
-                    './bower_components/bootstrap/dist/js/bootstrap.js'
+                    './bower_components/bootstrap/dist/js/bootstrap.js',
+                    './assets/js/*.js'
                 ],
                 dest: './../js/libraries.js'
-            },
-            css: {
-                src: './assets/css/*.css',
-                dest: './../css/libraries.css'
             }
         },
 
@@ -66,7 +74,7 @@ module.exports = function(grunt) {
         watch: {
             less: {
                 files: ['./assets/less/*.less'],
-                tasks: ['less', 'concat:css']
+                tasks: ['less']
             },
             copy: {
                 files: ['./bower_components/font-awesome/fonts/*', './bower_components/headjs/dist/1.0.0/head.min.js' ],
@@ -75,16 +83,16 @@ module.exports = function(grunt) {
             js: {
                 files: [
                     './bower_components/jquery/dist/jquery.js',
-                    './bower_components/bootstrap/dist/js/bootstrap.js'
+                    './bower_components/bootstrap/dist/js/bootstrap.js',
+                    './assets/js/*.js'
                 ],
                 tasks: ['concat:js','uglify:js']
             },
             css: {
                 files: [
-                    //watched files
                     './assets/css/*.css'
                 ],
-                tasks: ['concat:css']
+                tasks: ['cssmin']
             }
         }
     });
@@ -95,10 +103,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 
     // Task definition
-    grunt.registerTask('start', ['less', 'copy', 'concat', 'uglify']);
+    grunt.registerTask('hard', ['less', 'cssmin', 'copy', 'concat', 'uglify']);
     grunt.registerTask('default', ['watch']);
 
 };
