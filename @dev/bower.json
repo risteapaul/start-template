@@ -2,7 +2,7 @@
   "name": "Bootstrap",
   "dependencies": {
     "bootstrap": "~3.3.6",
-    "font-awesome": "~4.5.0",
+    "font-awesome": "~4.6.3",
     "headjs": "~1.0.3"
   }
 }

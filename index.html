@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <link rel="icon" href="img/favicon.ico">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
 
-    <title>Start</title>
+        <title>Start</title>
 
-    <script type="text/javascript" src="js/head.min.js"></script>
+        <script type="text/javascript" src="js/head.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/libraries.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
 
-    <!--styles-->
-    <script type="text/javascript">
-        head.load("css/libraries.css", "style.css");
-    </script>
+    <body>
 
-    <!--javascript-->
-    <script type="text/javascript">
-        head.load("js/libraries.js", function() {
-            head.ready(document, function() {
-                head.load("js/init.js");
+        <div class="mainloading" style="width:100%; height: 1000px; background: url('img/loading.svg') no-repeat 50% 100px; text-align: center; padding-top: 160px; font-family: arial, sans-serif; font-size: 17px; color: #333;">Se incarca.. </div>
+
+        <div class="header">
+            <div class="container">
+                header
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                content
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                footer
+            </div>
+        </div>
+
+        <!--javascript-->
+        <script type="text/javascript" src="js/libraries.js"></script>
+        <script type="text/javascript" src="js/init.js"></script>
+
+        <script type="text/javascript">
+            head.ready(function() {
+                if (head.screen.innerWidth < 768 ) {
+                    // js & css for screens smaller that 768px
+                    head.load("js/init-small.js");
+                }
+                if (head.screen.innerWidth > 767) {
+                    // js & css for screens bigger that 767px
+                    head.load("js/init-big.js");
+                }
+                if (head.browser.ie && head.browser.version < 9) {
+                    head.load("css/legacy/ie.css", "js/legacy/ie.js");
+                }
             });
-        });
-        if (head.mobile) {
-            // js & css for mobile
-        }
-        if (head.browser.ie && head.browser.version < 9) {
-            head.load("css/legacy/ie.css", "js/legacy/ie.js");
-        }
-    </script>
+        </script>
 
-
-
-</head>
-
-<body>
-
-<div class="mainloading" style="width:100%; height: 1000px; background: url('img/loading.gif') no-repeat 50% 100px; text-align: center; padding-top: 160px; font-family: arial, sans-serif; font-size: 17px; color: #999;">Se incarca.. </div>
-
-
-<div class="header">
-    <div class="container">
-        header
-    </div>
-</div>
-
-<div class="content">
-    <div class="container">
-        content
-    </div>
-</div>
-
-<div class="footer">
-    <div class="container">
-        footer
-    </div>
-</div>
-
-
-</body>
+    </body>
 </html>

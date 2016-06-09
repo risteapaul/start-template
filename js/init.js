@@ -3,18 +3,37 @@
 /* risteapaul[at]gmail.com */
 
 var Layout = {
-    variables: {
-        a: 'start'
-    },
     init: function () {
-        var vars = Layout.variables;
-        console.log(vars.a);
+        //default function
+        this.loading("stop", 1000);
+    },
+    loading: function(type, time) {
+        $(document).on("click", "a", function(){
+            if ($(this).hasClass('no-loader')) {
+                return;
+            }
+            $('.mainloading').show();
+            setTimeout(function(){
+                $('.mainloading').hide();
+            }, 6000);
+        });
+        var delay = 0;
+        if (time) {
+            delay = time;
+        }
+        if (type == "stop") {
+            setTimeout(function() {
+                $('.mainloading').hide();
+            }, delay);
+        }
     }
 };
 
 (function ($) {
-    Layout.init();
-    if(window.console && window.console.log) {
-        console.log("all done!");
-    }
+    $(document).ready(function() {
+        Layout.init();
+        if(window.console && window.console.log) {
+            console.log("<!--js loaded-->");
+        }
+    });
 })(jQuery);
