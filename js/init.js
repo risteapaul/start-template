@@ -5,27 +5,38 @@
 var Layout = {
     init: function () {
         //default function
-        this.loading("stop", 1000);
+        this.loading();
+        this.loading("stop", 800);
     },
     loading: function(type, time) {
-        $(document).on("click", "a", function(){
-            if ($(this).hasClass('no-loader')) {
-                return;
-            }
-            $('.mainloading').show();
-            setTimeout(function(){
-                $('.mainloading').hide();
-            }, 6000);
-        });
+        var elem = $('.mainloading');
         var delay = 0;
         if (time) {
             delay = time;
         }
         if (type == "stop") {
             setTimeout(function() {
-                $('.mainloading').hide();
+                elem.animate({'opacity': 0}, 500, function(){
+                    $(this).hide();
+                });
             }, delay);
+            return;
         }
+        if (type == "start") {
+            setTimeout(function() {
+                elem.show();
+                elem.animate({'opacity': 1}, 500);
+            }, delay);
+            return;
+        }
+        $(document).on("click", "a", function(){
+            if ($(this).hasClass('no-loader') || $(this).parents().hasClass('no-loader')) {
+                return;
+            }
+            elem.show();
+            elem.animate({'opacity': 1}, 500);
+            Layout.loading("stop", 6000); //stop anyway after 6 seconds
+        });
     }
 };
 
