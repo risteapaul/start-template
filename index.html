@@ -10,11 +10,19 @@
 
         <link rel="stylesheet" type="text/css" href="css/libraries.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <style type="text/css">
+            #mainloading { position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 9999;  background: #486ab4; }
+            #mainloading-text { color: #fff; position: fixed; text-align: center; width: 100%; top: 170px; font-size: 15px; }
+            #mainloading::before, #mainloading::after { content: ""; position: absolute; top: 100px; left: 50%; margin-left: -25px; width: 50px; height: 50px; border-radius: 100%; border: 5px solid rgba(0, 0, 0, 0); border-top-color: #3c6969; }
+            #mainloading::before { z-index: 100; animation: spin 1s infinite;  }
+            #mainloading::after { border: 5px solid #fff; }
+            @keyframes spin { 0% { -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
+        </style>
     </head>
 
     <body>
 
-        <div class="mainloading" style="position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 9999; background: #fff url('img/loading.svg') no-repeat 50% 100px; text-align: center; padding-top: 160px; font-family: arial, sans-serif; font-size: 17px; color: #333;">Se incarca.. </div>
+        <div id="mainloading"><span id="mainloading-text">Se incarca..</span></div>
 
         <div class="header">
             <div class="container">
@@ -37,21 +45,25 @@
         <!--javascript-->
         <script type="text/javascript" src="js/head.min.js"></script>
         <script type="text/javascript" src="js/libraries.js"></script>
+        <script type="text/javascript" src="js/responsive.js"></script>
         <script type="text/javascript" src="js/init.js"></script>
 
+        <!--responsive scripts-->
         <script type="text/javascript">
-            head.ready(function() {
-                if (head.screen.innerWidth < 768 ) {
-                    // js & css for screens smaller that 768px
-                    head.load("js/init-small.js");
-                }
-                if (head.screen.innerWidth > 767) {
-                    // js & css for screens bigger that 767px
-                    head.load("js/init-big.js");
-                }
-                if (head.browser.ie && head.browser.version < 9) {
-                    head.load("css/legacy/ie.css", "js/legacy/ie.js");
-                }
+            head.ready(document, function() {
+                head.load('js/responsive.js', function () {
+                    Responsive.init({
+                        'desktop' : ['js/desktop.js', 'css/desktop.css'],
+                        'mobile' : ['js/mobile.js', 'css/mobile.css'],
+                        'version' : '1mai' //used for cache clear force
+                    });
+                });
+            });
+            Layout.constants({
+                //pass info from html to js
+                'website' : 'website is ready',
+                'txt4mobile' : 'mobile js loaded',
+                'txt4desktop' : 'desktop js loaded'
             });
         </script>
 

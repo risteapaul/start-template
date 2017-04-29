@@ -1,3 +1,4 @@
+@dev/  
 npm install  
 bower install  
 grunt hard  
